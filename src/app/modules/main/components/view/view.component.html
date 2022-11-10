@@ -1,0 +1,7 @@
+<div class="container">
+    <div *ngFor="let a of api$ | async | keyvalue; let i = index">
+      <img [src]="a.value['url']" alt="Cat image">
+    </div>
+</div>
+
+

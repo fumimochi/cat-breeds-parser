@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]="controllerForm" (submit)="submit()">
+        <div class="controllers ">
+            <mat-form-field appearance="fill">
+                <mat-label>Select breed</mat-label>
+                <mat-select formControlName="breed" (selectionChange)="onSelectBreed()">
+                    <mat-option value="">--- All breeds ---</mat-option>
+
+                    <div *ngFor="let breed of breeds | async | keyvalue">
+                        <mat-option [value]="breed.value['id']">{{breed.value['name']}}</mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Select images amount</mat-label>
+                <mat-select formControlName="imageAmount">
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="6">6</mat-option>
+                    <mat-option value="10">10</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button mat-raised-button type="submit" [disabled]="disabled">Search images</button>
+    </form>
+</div>
