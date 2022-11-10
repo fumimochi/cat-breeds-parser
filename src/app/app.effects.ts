@@ -10,8 +10,7 @@ import { apiParams, initialState, requestedImages } from "./store/api";
 @Injectable()
 export class AppEffects {
 
-
-    api$ = createEffect(() => this.actions$.pipe(
+    public api$ = createEffect(() => this.actions$.pipe(
         ofType(apiParams),
         map((x) => requestedImages({images: this._http.get(`${initialState.api}?limit=${x.limit}&breed_ids=${x.breed}&api_key=${MY_API_KEY}`)
     }))
